@@ -1,7 +1,7 @@
 
 // import '././css/Style.scss';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Main from "./views/Main/Main";
+
 
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-            <Route exact path="/" element={<Main/>}/>
+            {/*<Route exact path="/" element={</>}/>*/}
         </Routes>
       </BrowserRouter>
     </div>

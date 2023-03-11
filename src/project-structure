@@ -1,0 +1,44 @@
+- src
+--- domain (BE Entity) 도메인 의존 컴포넌트
+
+------ User
+---------- profile (마이페이지)
+---------- my post list
+---------- adoption process
+---------- bookmark list
+
+------ Adoption
+---------- adoption form
+
+------ Post
+---------- post list
+---------- post form
+---------- post detail
+-------------- comment
+
+------ Animal
+---------- animal list (card)
+---------- animal detail
+
+------ Blog
+---------- blog list component
+---------- blog detail
+
+------ Admin -> 미정
+---------- blog form
+---------- adoption application list (입양 신청 목록)
+---------- adoption detail   (서류 심사 등)
+
+
+--- components (재사용)
+------ Header
+------ Hook
+------ Button
+------ Input
+------ Checkbox
+------ Context => Redux (전역 데이터)
+------ Editor
+------ Map
+
+
+
