@@ -4,3 +4,7 @@
 
 /* font */
 @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Farsan&family=Gugi&family=IBM+Plex+Sans+KR:wght@100;200;300;400;500;600;700&family=Kirang+Haerang&family=Krona+One&family=Righteous&display=swap');
+
+body {
+    background-color: #fdfdfd;
+}

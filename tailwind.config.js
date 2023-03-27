@@ -10,6 +10,9 @@ module.exports = {
       'main': "#0f172a",
       'sub': "#64748b",
       'sub2': "#f1f5f9",
+      'white': "#ffffff",
+      'temp': "rgb(157, 151, 139)",
+      
     },
     fontFamily: {
       'animoly1': ['Gugi'],

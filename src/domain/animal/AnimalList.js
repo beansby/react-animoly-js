@@ -99,21 +99,20 @@ function AnimalList() {
         // 배너 + 검색필터 + 정렬 + 카드형 목록 + 페이징
         <div className="">
             {/* 광고 배너 */}
-            <div className="container w-[930px] h-[180px] mx-auto mt-20 mb-10 bg-sub2 text-center">
+            <div className="container w-[930px] h-[180px] mx-auto mt-20 mb-10 bg-temp text-center">
                 광고 배너 930*180 (구글 광고배너 기준)
             </div>
 
             {/* 검색필터 */}
-            <div className="container flex w-[930px] rounded-lg mx-auto bg-white ">
+            <div className="container flex w-[800px] rounded-lg mx-auto bg-sub2 ">
                 
                 {/* static child : 지도 svg*/}
                 <div className="static inline-block box-content w-[250px] h-[280px] ml-2.5 rounded-lg bg-white">
-                    
                 </div>
 
                 {/* static sibling : 조건 목록 */}
                 {filters.map((section) => (
-                    <div key={section.id} className="flex-col block static">
+                    <div key={section.id} className="flex-col block static ">
                         
                             {/* title */}
                             <span className="bg-accent text-white rounded-xl px-[25px] py-[5px] mx-auto">
@@ -121,7 +120,7 @@ function AnimalList() {
                             </span>
                             {/* options */}
                             {section.options.map((option, idx)=>(
-                                <div key={option.value} className="px-[5px] py-[5px]">
+                                <div key={option.value} className="px-[5px] py-[5px] ">
                                     <input type="checkbox" defaultValue={option.value} defaultChecked={option.checked}
                                         id={`filter-${section.id}-${idx}`} name={`${section.id}[]`}
                                         className=""
@@ -138,12 +137,12 @@ function AnimalList() {
             </div>
 
             {/* 정렬 : 드롭다운 */}
-            <div className="container w-[930px] text-main mt-[40px] text-right right-0">
+            <div className="container w-[800px] text-main mt-[40px] text-right right-0 mx-auto">
                 정렬
             </div>
 
             {/* 카드목록 + 페이징 */}
-            <div className="container w-[930px] h-[1080px] rounded-2xl mt-5 bg-sub2">
+            <div className="container w-[800px] h-[1080px] rounded-2xl mt-5 bg-sub2 mx-auto">
                 <Card/>
             </div>
 

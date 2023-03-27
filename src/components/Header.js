@@ -4,8 +4,8 @@ import { useState } from 'react'
 export default function Header() {
 
     return(
-        <header className="bg-white">
-            <nav className='flex mx-32 h-24 mt-16 mb-10 items-center font-kor font-medium text-main'> 
+        <header className="">
+            <nav className='flex mx-auto w-[800px] h-24 mt-16 mb-10 items-center font-kor font-medium text-main'> 
 
                 <div className='flex mx-auto'>
                     <a href="#" className="-m-1.5 p-1.5 ">
@@ -23,7 +23,7 @@ export default function Header() {
                 <div className='flex'> 
                     <a href='#' className='-m-1.5 p-1.5'>
                         <span className='sr-only'> Animoly </span>
-                        <img className='h-24 w-auto' src='/animoly-logo.png' alt='animoly-logo'/>
+                        <img className='h-auto w-[100px]' src='/animoly-logo.png' alt='animoly-logo'/>
                     </a>
                 </div>
 
