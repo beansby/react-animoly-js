@@ -12,7 +12,7 @@ function App() {
     <div>
       <BrowserRouter>
         <Header/>
-        <div className='mx-40'>
+        <div>
           <Routes>
               <Route exact path="/" element={<AnimalList/>}/>
               <Route exact path="/login" element={<Login/>}/>\
