@@ -15,7 +15,7 @@ function App() {
         <div className='mx-40'>
           <Routes>
               <Route exact path="/" element={<AnimalList/>}/>
-              <Route exact path="/login" element={<Login/>}/>
+              <Route exact path="/login" element={<Login/>}/>\
           </Routes>
         </div>
       </BrowserRouter>
