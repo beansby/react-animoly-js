@@ -8,3 +8,40 @@
 body {
     background-color: #fdfdfd;
 }
+
+/* header */
+.nav-main-btn:hover .nav-drop-box {
+    display: block;
+    margin-top: 3px;
+}
+
+.navbar {
+    @apply mx-auto;
+}
+
+.nav-main-btn {
+    @apply
+    inline-block text-center leading-nav
+    overflow-hidden min-w-[170px] mx-[18px]
+    hover:text-accent hover:font-bold hover:border-b-4 hover:border-solid hover:border-b-accent;
+}
+
+.nav-logo {
+    @apply inline-block
+    leading-nav mt-10;
+}
+
+.nav-main-text {
+    @apply text-xl min-w-[170px];
+}
+
+.nav-drop-box {
+    @apply
+    hidden absolute min-w-[170px] z-10  bg-sub2 rounded-b-3xl;
+}
+
+.nav-drop-btn {
+    @apply block float-none text-center text-lg font-normal text-main
+    h-[50px] leading-[50px]
+    hover:text-accent hover:font-bold;
+}

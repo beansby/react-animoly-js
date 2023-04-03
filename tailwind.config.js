@@ -7,9 +7,10 @@ module.exports = {
   theme: {
     colors:{
       'accent': "#F07F05",
-      'main': "#0f172a",
+      'main': "#2E2E2E",
+      // "#0f172a",
       'sub': "#64748b",
-      'sub2': "#f1f5f9",
+      'sub2': "#FAFAFA",
       'white': "#ffffff",
       'temp': "rgb(157, 151, 139)",
       
@@ -26,9 +27,12 @@ module.exports = {
       'half': '500px',
     },
     extend: {
+      lineHeight: {
+        'nav' : '50px',
+      },
       spacing: {
 
-      }
+      },
       
     },
   },
