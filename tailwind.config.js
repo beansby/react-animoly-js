@@ -6,12 +6,14 @@ module.exports = {
   ],
   theme: {
     colors:{
-      'accent': "#F07F05",
+      'accent': "#FF5E00",
+      // "#F07F05",
       'main': "#2E2E2E",
       // "#0f172a",
       'sub': "#64748b",
       'sub2': "#FAFAFA",
       'white': "#ffffff",
+      'grey' : "#DFDFDF",
       'temp': "rgb(157, 151, 139)",
       
     },

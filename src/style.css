@@ -45,3 +45,19 @@ body {
     h-[50px] leading-[50px]
     hover:text-accent hover:font-bold;
 }
+
+
+/* login */
+.checkbox-btn {
+    @apply rounded px-4 h-3 w-3 border 
+    text-accent accent-accent bg-sub;
+}
+
+.login-input {
+    @apply block h-[36px] w-[250px] rounded-xl px-4 
+    border border-grey focus:outline-accent;
+}
+
+.input-label {
+    @apply px-4 text-accent font-semibold;
+}
