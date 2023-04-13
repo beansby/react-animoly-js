@@ -6,14 +6,16 @@ module.exports = {
   ],
   theme: {
     colors:{
-      'accent': "#FF5E00",
+      'accent': "#F86B1C",  //orange
+      // "#FF7A2C",
       // "#F07F05",
-      'main': "#2E2E2E",
-      // "#0f172a",
-      'sub': "#64748b",
+      'main': "#363636",    //darkgrey
+      'sub': "#A0A0A0",     //grey
       'sub2': "#FAFAFA",
       'white': "#ffffff",
       'grey' : "#DFDFDF",
+      'midgrey': "#8E8E8E",
+      'darkgrey': "#626262",
       'temp': "rgb(157, 151, 139)",
       
     },
@@ -38,5 +40,7 @@ module.exports = {
       
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/custom-forms'),
+  ],
 }

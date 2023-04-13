@@ -23,7 +23,7 @@ body {
     @apply
     inline-block text-center leading-nav
     overflow-hidden min-w-[170px] mx-[18px]
-    hover:text-accent hover:font-bold hover:border-b-4 hover:border-solid hover:border-b-accent;
+    hover:text-accent hover:font-bold hover:border-b-[3px] hover:border-solid hover:border-b-accent;
 }
 
 .nav-logo {
@@ -43,14 +43,14 @@ body {
 .nav-drop-btn {
     @apply block float-none text-center text-lg font-normal text-main
     h-[50px] leading-[50px]
-    hover:text-accent hover:font-bold;
+    hover:text-accent hover:font-semibold;
 }
 
 
 /* login */
 .checkbox-btn {
     @apply rounded px-4 h-3 w-3 border 
-    text-accent accent-accent bg-sub;
+    text-accent accent-accent bg-white active:text-white;
 }
 
 .login-input {
@@ -60,4 +60,31 @@ body {
 
 .input-label {
     @apply px-4 text-accent font-semibold;
+}
+
+/* signup */
+.signup-div {
+    @apply w-[300px] mx-auto justify-center items-center mt-7
+}
+
+.signup-label {
+    @apply block text-main font-semibold px-1 h-[30px] ;
+}
+
+.signup-input {
+    @apply block h-[36px] w-[300px] rounded-xl px-4
+    border border-grey focus:outline-accent;
+}
+
+/* button */
+.btn {
+    @apply
+    block bg-accent text-white rounded-xl mx-auto;
+}
+
+
+
+/* icon */
+.card-icon {
+    @apply inline-block h-[20px] pr-1;
 }

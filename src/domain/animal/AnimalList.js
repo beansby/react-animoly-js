@@ -1,74 +1,69 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "../../components/Card";
+import Banner from "../../components/Banner";
+import SearchOption from "../../components/SearchOption";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 // 검색 옵션 : 지역(happenPlace, careAddr), 성별(sexCd), 품종(kindCd), 상태(processState)
 const filters = [
     {
-        id: 'region',   //지역 (보호소)
-        name : '지역',
+        id: '지역',   //지역 (보호소)
+        name : 'uprCd',
         options: [
-            { value: '서울', label: '서울', checked: false },
-            { value: '경기', label: '경기', checked: false },
-            { value: '인천', label: '인천', checked: false },
+            { value: '6110000', label: '서울', checked: false },
+            { value: '6410000', label: '경기', checked: false },
+            { value: '6280000', label: '인천', checked: false },
+            { value: '6420000', label: '강원', checked: false },
+            { value: '5690000', label: '세종', checked: false },
+            { value: '6300000', label: '대전', checked: false },
+            { value: '6270000', label: '대구', checked: false },
+            { value: '6260000', label: '부산', checked: false },
+            { value: '6310000', label: '울산', checked: false },
 
-            { value: '강원', label: '강원', checked: false },
+            { value: '6440000', label: '충남', checked: false },
+            { value: '6430000', label: '충북', checked: false },
 
-            { value: '충남', label: '충남', checked: false },
-            { value: '충북', label: '충북', checked: false },
-            { value: '세종', label: '세종', checked: false },
-            { value: '대전', label: '대전', checked: false },
+            { value: '6460000', label: '전남', checked: false },
+            { value: '6450000', label: '전북', checked: false },
+            { value: '6290000', label: '광주', checked: false },
 
-            { value: '전남', label: '전남', checked: false },
-            { value: '전북', label: '전북', checked: false },
-            { value: '광주', label: '광주', checked: false },
+            { value: '6480000', label: '경남', checked: false },
+            { value: '6470000', label: '경북', checked: false },
 
-            { value: '경남', label: '경남', checked: false },
-            { value: '경북', label: '경북', checked: false },
-            { value: '대구', label: '대구', checked: false },
-            { value: '부산', label: '부산', checked: false },
-            { value: '울산', label: '울산', checked: false },
+            { value: '6500000', label: '제주', checked: false },
         ]
     },
 
     {
-        id: 'kind',     //품종 
-        name : '품종',
+        id: '축종',     //품종 
+        name : 'upKind',
         options: [
-            { value: '개', label: '개', checked: false },
-            { value: '고양이', label: '고양이', checked: false },
-            { value: '기타', label: '기타', checked: false },
+            { value: '417000', label: '개', checked: false },
+            { value: '422400', label: '고양이', checked: false },
+            { value: '429900', label: '기타', checked: false },
         ]
     },
 
     {
-        id: 'sex',      //성별
-        name : '성별',
-        options: [
-            { value: 'M', label: '수컷', checked: false },
-            { value: 'F', label: '암컷', checked: false },
-            { value: 'Q', label: '미상', checked: false },
-        ]
-    },
-
-    {
-        id: 'neuter',   //중성화 여부 
-        name : '중성화',
+        id: '중성화',   //중성화 여부 
+        name : 'neuter_yn',
         options: [
             { value: 'Y', label: '예', checked: false },
             { value: 'N', label: '아니오', checked: false },
             { value: 'U', label: '미상', checked: false },
-            { value: 'Null', label: '전체', checked: false },
+            { value: '', label: '전체', checked: false },
         ]
     },
 
     {
-        id: 'status',     //상태
-        name : '상태',
+        id: '상태',     //상태
+        name : 'state',
         options: [
             { value: 'notice', label: '공고중', checked: false },
             { value: 'protect', label: '보호중', checked: false },
-            { value: 'null', label: '전체', checked: false },
+            { value: '', label: '전체', checked: false },
         ]
     },
 ]
@@ -80,59 +75,90 @@ const sortBy = [
 ]
 
 
-function AnimalList() {
 
-    useEffect(()=>{
-        axios.get("http://localhost:8080/api/animalsV2")
+function AnimalList() {
+    const [animals, setAnimals] = useState([]);
+    // const [region, setRegion] = useState('');   //지역
+    // const [kind, setKind] = useState('');       //축종
+    // const [sex, setSex] = useState('');         //성별
+    // const [neuter, setNueter] = useState('');   //중성화
+    // const [state, setState] = useState('');     //상태
+
+    const [keywords, setKeywords] = useState({uprCd:'', upKind:'', neuter_yn:'', state:''});
+
+    const selectSearchOption = (e) => {
+        let name = e.target.name;
+        let value = e.target.value;
+        console.log(name +":"+ value);
+        setKeywords({...keywords, [name]:value});
+        console.log(keywords);
+    }
+
+    const search = (e) => {
+        const formData = new FormData();
+        formData.append('upKind', keywords.upKind); //축종
+        formData.append('state', keywords.state);   //상태
+        formData.append('neuter_yn', keywords.neuter_yn); //중성화
+        formData.append('uprCd', keywords.uprCd); //지역
+
+        let param = {upKind:keywords.upKind, state:keywords.state, neuter_yn:keywords.neuter_yn, uprCd:keywords.uprCd};
+        
+        axios.get("http://localhost:8080/api/fetch-animals", {params:param})
         .then((res)=>{
-            console.log(res.data);
-        }).catch((err)=> {
+            console.log(res.data.data);
+            setAnimals(res.data.data);
+        }).catch((err)=>{
             console.log(err);
         })
-    }, [])
+    }
 
-    
-
+    useEffect(()=>{
+        axios.get('http://localhost:8080/api/fetch-animals', null, null)
+        .then((res)=>{
+            console.log(res.data.data);
+            setAnimals(res.data.data);
+        }).catch((err)=>{
+            console.log(err);
+        })
+    },[])
 
 
     return (
         // 배너 + 검색필터 + 정렬 + 카드형 목록 + 페이징
         <div className="">
-            {/* 광고 배너 */}
-            <div className="container w-[930px] h-[180px] mx-auto mt-20 mb-10 bg-temp text-center">
-                광고 배너 930*180 (구글 광고배너 기준)
-            </div>
+            {/* 광고 배너 930*180 (구글 광고배너 기준)*/}
+            <Banner/>
 
             {/* 검색필터 */}
-            <div className="container flex w-[800px] rounded-lg mx-auto bg-sub2 ">
-                
-                {/* static child : 지도 svg*/}
-                <div className="static inline-block box-content w-[250px] h-[280px] ml-2.5 rounded-lg bg-white">
+            <div className="bg-main/5 rounded-2xl mx-auto w-[930px] font-kor flex">
+                <div className="w-[300px] bg-white rounded m-2">
+                    지도
                 </div>
-
-                {/* static sibling : 조건 목록 */}
-                {filters.map((section) => (
-                    <div key={section.id} className="flex-col block static ">
-                        
-                            {/* title */}
-                            <span className="bg-accent text-white rounded-xl px-[25px] py-[5px] mx-auto">
-                                {section.name}
-                            </span>
-                            {/* options */}
-                            {section.options.map((option, idx)=>(
-                                <div key={option.value} className="px-[5px] py-[5px] ">
-                                    <input type="checkbox" defaultValue={option.value} defaultChecked={option.checked}
-                                        id={`filter-${section.id}-${idx}`} name={`${section.id}[]`}
-                                        className=""
-                                    />
-                                    <label className="text-main">
-                                        {option.label}
-                                    </label>
+                <div className="flex-col p-4">
+                    {filters.map((section)=>{
+                        return (
+                            <div key={section.name} class="main flex-col overflow-hidden select-none w-[600px] m-1">
+                                <div class="title w-24 text-center py-2 my-auto px-5 text-accent border-b-2 border-accent font-semibold mr-2">
+                                    {section.id}
                                 </div>
-                            ))}
-                       
+                                {section.options.map((option)=>{
+                                    return(
+                                        <label className="inline-flex radio p-1 cursor-pointer text-main" onChange={selectSearchOption}>
+                                            <input className="my-auto transform scale-125 form-radio text-accent border-grey border h-3 w-3" type="radio" name={section.name} value={option.value} />
+                                            <div className="title px-2"> {option.label} </div>
+                                        </label>
+                                    )
+                                })}
+                            </div>
+                        )
+                    })}
+                    <div className="relative h-[10px]">
+                            <div className="absolute right-4 bottom-4 bg-main w-20 h-8 leading-8 text-center bg-white text-midgrey border border-grey rounded-2xl hover:text-white hover:bg-accent hover:font-semibold hover:border-accent" onClick={search}>
+                                <FontAwesomeIcon icon={faMagnifyingGlass} />
+                                <button type="button"> &nbsp; 검색 </button>
+                            </div>
                     </div>
-                ))}
+                </div>
                 
             </div>
 
@@ -142,9 +168,8 @@ function AnimalList() {
             </div>
 
             {/* 카드목록 + 페이징 */}
-            <div className="container w-[800px] h-[1080px] rounded-2xl mt-5 bg-sub2 mx-auto">
-                <Card/>
-            </div>
+            
+            <Card animals={animals}/>
 
         </div>
     )
