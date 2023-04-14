@@ -11,12 +11,13 @@ import AdoptionInfo from './domain/adoption/AdoptionInfo';
 import AnimolyInfo from './domain/blog/AnimolyInfo';
 import RecoveryId from './domain/user/RecoveryId';
 import RecoveryPassword from './domain/user/RecoveryPassword';
+import Postcode from './components/PostCode';
 
 
 function App() {
   return (
     <div>
-      <BrowserRouter>
+      {/* <BrowserRouter> */}
         <Header/>
         <FloatingButton/>
         <div>
@@ -27,6 +28,7 @@ function App() {
               <Route exact path="/idrecovery" element={<RecoveryId/>}/>
               <Route exact path="/passwordrecovery" element={<RecoveryPassword/>}/>
 
+              <Route exact path="/post" element={<Postcode/>}/>
 
               <Route exact path="/animoly" element={<AnimolyInfo/>}/>
 
@@ -34,7 +36,7 @@ function App() {
           </Routes>
         </div>
         <Footer/>
-      </BrowserRouter>
+      {/* </BrowserRouter> */}
     </div>
   );
 }

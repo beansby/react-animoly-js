@@ -9,6 +9,12 @@ body {
     background-color: #fdfdfd;
 }
 
+@media (min-width:640px) {
+    .container {
+        max-width: 1280px;
+    }
+}
+
 /* header */
 .nav-main-btn:hover .nav-drop-box {
     display: block;
@@ -49,8 +55,9 @@ body {
 
 /* login */
 .checkbox-btn {
-    @apply rounded px-4 h-3 w-3 border 
-    text-accent accent-accent bg-white active:text-white;
+    @apply 
+    form-checkbox text-accent border border-grey rounded-md
+    h-4 w-4 p-1;
 }
 
 .login-input {
@@ -58,22 +65,33 @@ body {
     border border-grey focus:outline-accent;
 }
 
-.input-label {
+.login-input-label {
     @apply px-4 text-accent font-semibold;
 }
 
 /* signup */
 .signup-div {
-    @apply w-[300px] mx-auto justify-center items-center mt-7
+    @apply w-[300px] mx-auto justify-center items-center mt-7 font-kor;
 }
 
-.signup-label {
+.signup-input-label {
     @apply block text-main font-semibold px-1 h-[30px] ;
 }
 
 .signup-input {
     @apply block h-[36px] w-[300px] rounded-xl px-4
-    border border-grey focus:outline-accent;
+    border border-grey focus:outline-accent mb-1;
+}
+
+.signup-input-zip {
+    @apply inline-block h-[36px] w-[200px] rounded-xl px-4
+    border border-grey focus:outline-accent mb-2;
+}
+
+.signup-btn-zip {
+    @apply inline-block h-[36px] w-[90px] rounded-xl px-4 ml-2
+    bg-white text-accent text-sm border border-accent
+    hover:bg-accent hover:text-white;
 }
 
 /* button */
