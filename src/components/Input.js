@@ -13,8 +13,8 @@ export function Input({label, type, labelcss, inputcss, withFeedbackLabel = true
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    console.log("==================Input 주소변경");
     if(home.zip != ''){
+      console.log("==================Input 주소변경");
       console.log("zip:"+home.zip+", address1:"+home.city);
       
       //redux 저장
