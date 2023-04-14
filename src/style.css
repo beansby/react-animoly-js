@@ -103,6 +103,9 @@ body {
 
 
 /* icon */
-.card-icon {
+.card-icon-state {
+    @apply inline-block h-[15px] pr-1;
+}
+.card-icon-sex {
     @apply inline-block h-[20px] pr-1;
 }
